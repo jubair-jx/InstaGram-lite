@@ -16,7 +16,7 @@ const isLiked = (id) => {
 };
 
 const addToLiked = (id) => {
-  likedPostsId.plus(id);
+  likedPostsId.push(id);
   showPosts(posts);
 };
 
@@ -139,7 +139,7 @@ const createPost = (post) => {
                 </div>
               </div>
       `;
-  console.log(post);
+
   return div;
 };
 
@@ -155,17 +155,23 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
   const likedPosts = getLikedPosts();
+  let likedsPosts = document.getElementById("liked");
+  likedsPosts.innerHTML = "";
   likedPosts.forEach((post) => {
     const div = createPost(post);
-    document.getElementById("liked").appendChild(div);
+
+    likedsPosts.appendChild(div);
   });
 };
 
 const displayReportedPosts = () => {
   const reportedPosts = getReportedPosts();
-  posts.forEach((post) => {
+  let reportedPost = document.getElementById("reported");
+  reportedPost.innerText = "";
+  reportedPosts.forEach((post) => {
     const div = createPost(post);
-    document.getElementById("reported").appendChild(div);
+
+    reportedPost.appendChild(div);
   });
 };
 
